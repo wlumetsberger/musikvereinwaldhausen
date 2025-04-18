@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Musikverein Waldhausen Website
 
-## Getting Started
+Eine moderne Website für den Musikverein Waldhausen, mit den charakteristischen Farben Grün und Rot der Vereinstracht. Die Website bietet Informationen über den Verein, kommende Termine und aktuelle Neuigkeiten.
 
-First, run the development server:
+## Features
+
+- Modernes, responsives Design mit traditionellen Elementen
+- Ansprechendes Layout für alle Geräte (Desktop, Tablet, Smartphone)
+- Sektion für kommende Veranstaltungen und Termine
+- Neuigkeiten-Bereich mit Artikeln
+- Einfache Erweiterbarkeit durch modularen Aufbau
+- Suchmaschinenoptimiertes HTML und Metadaten
+- Individuelles 404-Seite für bessere Benutzererfahrung
+
+## Technologien
+
+- **Next.js** - React Framework für moderne Webanwendungen
+- **TypeScript** - Für typsicheren Code
+- **Tailwind CSS** - Für responsive Gestaltung und anpassbares Design
+- **Azure Static Web Apps** - Hosting-Plattform
+
+## Lokale Entwicklung
+
+Um das Projekt lokal zu entwickeln:
 
 ```bash
+# Installieren der Abhängigkeiten
+npm install
+
+# Starten des Entwicklungsservers
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Öffnen Sie [http://localhost:3000](http://localhost:3000) in Ihrem Browser, um die Ergebnisse zu sehen.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Hinweis:** Für Next.js wird Node.js Version "^18.18.0 || ^19.8.0 || >= 20.0.0" benötigt. Falls Sie eine ältere Version verwenden, können Sie Node.js aktualisieren:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Laden Sie die neueste LTS-Version von [nodejs.org](https://nodejs.org/) herunter und installieren Sie diese, oder
+2. Verwenden Sie NVM für Windows: [nvm-windows](https://github.com/coreybutler/nvm-windows) um zwischen verschiedenen Node.js-Versionen zu wechseln
 
-## Learn More
+## Anpassung der Website
 
-To learn more about Next.js, take a look at the following resources:
+### Farben und Design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Die Vereinsfarben Grün und Rot sowie weitere Designelemente können in `src/app/globals.css` angepasst werden:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```css
+:root {
+  --primary: #1e6e25; /* Grüne Farbe anpassen */
+  --primary-dark: #15531c;
+  --secondary: #b22222; /* Rote Farbe anpassen */
+  --secondary-dark: #8b0000;
+  --accent: #f5f5dc; /* Akzentfarbe anpassen */
+}
+```
 
-## Deploy on Vercel
+### Schriftarten
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Die Website verwendet zwei Google Fonts:
+- Playfair Display für Überschriften
+- Source Sans 3 für Fließtext
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Diese können in `src/app/globals.css` angepasst werden.
+
+### Inhalte
+
+#### Neuigkeiten
+
+Die Neuigkeiten werden über das Service-Modul `src/app/services/newsService.ts` verwaltet. Hier können Sie die Nachrichtenartikel bearbeiten oder um eine API-Integration erweitern.
+
+#### Termine
+
+Die Veranstaltungstermine werden über das Service-Modul `src/app/services/eventsService.ts` verwaltet. Hier können Sie die Termine bearbeiten oder um eine API-Integration erweitern.
+
+### Komponenten
+
+Die wichtigsten Komponenten der Website sind:
+
+- **Header**: `src/app/components/Header.tsx` - Navigation und Logo
+- **Footer**: `src/app/components/Footer.tsx` - Kontaktinformationen und Links
+- **Seitenstrukturen**: Unter `src/app/` befinden sich die Hauptseiten der Website
+
+## Deployment
+
+Die Website ist für das Deployment auf Azure Static Web Apps konfiguriert. Eine detaillierte Anleitung für das Deployment finden Sie in der Datei `.github/azure-deployment-guide.md`.
+
+## Bilder
+
+Für die Verwendung eigener Bilder:
+
+1. Platzieren Sie Ihre Bilder im `public/images`-Verzeichnis
+2. Referenzieren Sie die Bilder in den Komponenten, z.B.:
+   ```jsx
+   <Image src="/images/ihr-bild.jpg" alt="Beschreibung" width={800} height={600} />
+   ```
+
+## Lizenz
+
+MIT

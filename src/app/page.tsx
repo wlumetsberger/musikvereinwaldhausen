@@ -381,7 +381,7 @@ export default async function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsItems.map((news, index) => (
+            {newsItems.map((news) => (
               <div key={news.artikelnr} className="group relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary)]/10 to-[var(--secondary)]/30 rounded-3xl -z-10 transform transition-transform duration-300 group-hover:scale-105"></div>
                 <div className="relative backdrop-blur-sm bg-white/80 dark:bg-black/40 p-8 rounded-3xl border border-white/20 shadow-xl h-full flex flex-col">
@@ -394,7 +394,7 @@ export default async function Home() {
                   </h3>
                   
                   <div className="bg-[var(--accent)] p-4 rounded-xl mb-5 italic text-gray-600 dark:text-gray-300 text-sm">
-                    "{news.sample}"
+                    &ldquo;{news.sample}&rdquo;
                   </div>
                   
                   <p className="text-gray-600 dark:text-gray-300 line-clamp-3 mb-6 flex-grow">

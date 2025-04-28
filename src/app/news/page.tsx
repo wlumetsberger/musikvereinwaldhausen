@@ -57,7 +57,7 @@ export default async function NewsPage() {
               </h3>
               
               <div className="bg-[var(--accent)] p-4 rounded-xl mb-5 italic text-gray-600 dark:text-gray-300 text-sm">
-                "{news.sample}"
+                &ldquo;{news.sample}&rdquo;
               </div>
               
               <p className="text-gray-600 dark:text-gray-300 line-clamp-3 mb-6 flex-grow">

@@ -3,13 +3,15 @@ import { getNewsById } from '../../services/newsService';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
-type NewsDetailParams = {
-  params: {
-    id: string;
-  }
-}
+type Params = {
+  id: string;
+};
 
-export async function generateMetadata({ params }: NewsDetailParams): Promise<Metadata> {
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Params 
+}): Promise<Metadata> {
   const newsId = parseInt(params.id);
   const newsItem = await getNewsById(newsId);
   
@@ -25,7 +27,11 @@ export async function generateMetadata({ params }: NewsDetailParams): Promise<Me
   };
 }
 
-export default async function NewsDetail({ params }: NewsDetailParams) {
+export default async function NewsDetail({ 
+  params 
+}: { 
+  params: Params 
+}) {
   const newsId = parseInt(params.id);
   const newsItem = await getNewsById(newsId);
   

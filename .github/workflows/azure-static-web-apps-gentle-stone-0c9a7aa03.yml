@@ -37,6 +37,7 @@ jobs:
           api_location: ""
           output_location: "out"
           app_build_command: "npm run build"
+          action: "upload"
           ###### End of Repository/Build Configurations ######
         env:
           NODE_VERSION: 18

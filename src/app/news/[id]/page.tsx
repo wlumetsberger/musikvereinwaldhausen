@@ -1,11 +1,20 @@
 import Link from 'next/link';
-import { getNewsById } from '../../services/newsService';
+import { getNewsById, getAllNews } from '../../services/newsService';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
 type Params = {
   id: string;
 };
+
+// Generate all possible path parameters for static export
+export async function generateStaticParams() {
+  const allNews = await getAllNews();
+  
+  return allNews.map((newsItem) => ({
+    id: newsItem.artikelnr.toString(),
+  }));
+}
 
 export async function generateMetadata({ 
   params 

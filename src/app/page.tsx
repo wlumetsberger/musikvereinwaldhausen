@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <div className="flex flex-col space-y-32">
-      {/* Hero Section - Modernized with asymmetric design and layered elements */}
+      {/* Hero Section - Updated with new CD image and Against font */}
       <section className="relative overflow-visible">
         {/* Background decorative elements */}
         <div className="absolute top-20 right-0 w-1/3 h-80 bg-[var(--primary)] opacity-10 rounded-l-full blur-3xl -z-10"></div>
@@ -36,7 +36,7 @@ export default async function Home() {
                 
                 {/* Main content card with glassmorphism */}
                 <div className="backdrop-blur-md bg-white/70 dark:bg-black/40 rounded-2xl shadow-xl p-8 border border-white/30">
-                  {/* Heading with creative typography */}
+                  {/* Heading with creative typography - using Against font */}
                   <div className="mb-8">
                     <h1 className="relative font-heading">
                       <span className="absolute -top-6 -left-2 text-8xl text-[var(--primary)]/10 font-black">♪</span>
@@ -115,17 +115,17 @@ export default async function Home() {
               </div>
             </div>
             
-            {/* Right image column with layered design */}
+            {/* Right image column - updated to use the CD image */}
             <div className="lg:w-1/2 relative h-[500px] w-full mt-12 lg:mt-0">
               {/* Decorative elements */}
               <div className="absolute -bottom-8 -right-8 w-full h-full bg-[var(--primary)] opacity-10 rounded-2xl rotate-3"></div>
               <div className="absolute -top-8 -left-8 w-full h-full bg-[var(--secondary)] opacity-10 rounded-2xl -rotate-3"></div>
               
-              {/* Main image container */}
+              {/* Main image container - now using CD.JPG */}
               <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl">
                 <Image 
-                  src="https://mvwaldhausen.z6.web.core.windows.net/images/heading4.jpg"
-                  alt="Musikverein Waldhausen"
+                  src="/images/cd.JPG"
+                  alt="Musikverein Waldhausen CD"
                   fill
                   priority
                   style={{ objectFit: 'cover', objectPosition: 'center' }}
@@ -227,12 +227,15 @@ export default async function Home() {
                 <div className="absolute -top-6 -right-6 h-32 w-32 bg-[var(--primary)] opacity-20 rounded-2xl -rotate-12"></div>
                 <div className="absolute -bottom-6 -left-6 h-24 w-24 bg-[var(--secondary)] opacity-20 rounded-2xl rotate-12"></div>
                 <div className="relative rounded-2xl overflow-hidden h-[400px] shadow-2xl">
-                  {/* Placeholder - replace with actual image */}
-                  <div className="bg-[var(--accent)] h-full w-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                    </svg>
-                  </div>
+                  {/* Using the CD image here too */}
+                  <Image 
+                    src="/images/cd.JPG"
+                    alt="Musikverein Waldhausen CD"
+                    fill
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    className="transition-transform duration-700 hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
                 </div>
               </div>
             </div>

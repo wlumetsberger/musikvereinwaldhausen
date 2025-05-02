@@ -360,7 +360,7 @@ export default function UeberUnsPage() {
                             name={member.name}
                             section={section.position}
                             alt={member.name}
-                            size={20}
+                            size={40}
                           />
                         </div>
                         <div>
@@ -409,7 +409,7 @@ export default function UeberUnsPage() {
                               name={member.name}
                               section={section.name}
                               alt={member.name}
-                              size={12}
+                              size={20}
                               filename={member.filename}
                             />
                           </div>

@@ -66,14 +66,17 @@ export default function MemberImage({ name, section, alt, size, filename }: Memb
           {initials}
         </div>
       ) : (
-        <Image 
-          src={imagePath}
-          alt={alt || name}
-          width={size * 4} // Higher resolution for better quality
-          height={size * 4}
-          className="object-cover h-full w-full"
-          onError={handleError}
-        />
+        <div className="relative w-full h-full">
+          <Image 
+            src={imagePath}
+            alt={alt || name}
+            fill
+            sizes={`${size * 4}px`}
+            className="object-cover"
+            style={{ objectPosition: 'center 30%' }} // Position to show faces better
+            onError={handleError}
+          />
+        </div>
       )}
     </div>
   );

@@ -30,7 +30,7 @@ export default async function Home() {
                 <div className="absolute -top-10 right-10 bg-white/80 dark:bg-black/60 backdrop-blur-sm rounded-lg p-2 shadow-lg transform rotate-3 z-20 hidden md:block">
                   <div className="flex items-center text-[var(--secondary)]">
                     <span className="text-3xl mr-2 animate-pulse">♫</span>
-                    <span className="text-sm font-medium">Seit 1925</span>
+                    <span className="text-sm font-medium">Seit 1880</span>
                   </div>
                 </div>
                 
@@ -97,21 +97,6 @@ export default async function Home() {
                     </Link>
                   </div>
                 </div>
-                
-                {/* Floating stats tag - moved to the right to avoid button overlap */}
-                <div className="absolute -bottom-6 -right-6 bg-white/90 dark:bg-black/60 backdrop-blur-sm rounded-xl p-3 border border-white/30 shadow-lg transform rotate-2 z-20 hidden md:block">
-                  <div className="flex items-center space-x-3">
-                    <div className="text-center">
-                      <span className="block text-lg font-bold text-[var(--primary)]">50+</span>
-                      <span className="text-xs text-gray-500">Musiker</span>
-                    </div>
-                    <div className="h-8 w-px bg-gray-200 dark:bg-gray-700"></div>
-                    <div className="text-center">
-                      <span className="block text-lg font-bold text-[var(--secondary)]">25</span>
-                      <span className="text-xs text-gray-500">Jungmusiker</span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             
@@ -146,7 +131,7 @@ export default async function Home() {
 
       {/* Feature/Stats Section with Glassmorphism */}
       <section className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Feature 1 */}
           <div className="relative group overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/10 to-[var(--primary)]/30 rounded-3xl -z-10 transform transition-transform duration-300 group-hover:scale-105"></div>
@@ -180,22 +165,6 @@ export default async function Home() {
           </div>
           
           {/* Feature 3 */}
-          <div className="relative group overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/10 to-[var(--primary)]/30 rounded-3xl -z-10 transform transition-transform duration-300 group-hover:scale-105"></div>
-            <div className="relative backdrop-blur-sm bg-white/70 dark:bg-black/40 p-8 rounded-3xl border border-white/20 shadow-xl h-full flex flex-col">
-              <div className="bg-[var(--primary)] h-12 w-12 flex items-center justify-center rounded-2xl mb-6 shadow-lg transform transition-transform group-hover:scale-110 group-hover:rotate-3 duration-300">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--primary)] mb-3">25 Jungmusiker</h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">
-                Nachwuchsmusiker in aktiver Ausbildung in unserer Jugendkapelle.
-              </p>
-            </div>
-          </div>
-          
-          {/* Feature 4 */}
           <div className="relative group overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/10 to-[var(--primary)]/30 rounded-3xl -z-10 transform transition-transform duration-300 group-hover:scale-105"></div>
             <div className="relative backdrop-blur-sm bg-white/70 dark:bg-black/40 p-8 rounded-3xl border border-white/20 shadow-xl h-full flex flex-col">

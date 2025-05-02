@@ -22,7 +22,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-600 dark:text-gray-300 my-6 max-w-md">
-              Seit 1925 bringen wir Musik und Kultur in unsere Gemeinde. Mit Leidenschaft, Tradition und 
+              Seit 1880 bringen wir Musik und Kultur in unsere Gemeinde. Mit Leidenschaft, Tradition und 
               Innovation gestalten wir das kulturelle Leben in Waldhausen.
             </p>
             

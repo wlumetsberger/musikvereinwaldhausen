@@ -81,7 +81,7 @@ const Header = () => {
       </div>
       
       {/* Mobile Navigation with modern transition */}
-      <div className={`fixed inset-0 bg-white/95 dark:bg-black/95 backdrop-blur-lg z-10 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden pt-20`}>
+      <div className={`fixed inset-0 bg-white dark:bg-gray-900 shadow-xl z-10 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden pt-20`}>
         <div className="container mx-auto px-4 py-8 space-y-2 flex flex-col h-full">
           {[
             { name: 'Startseite', href: '/' },
@@ -94,10 +94,10 @@ const Header = () => {
             <Link 
               key={item.name} 
               href={item.href}
-              className="relative overflow-hidden group px-4 py-4 font-medium text-gray-700 dark:text-gray-200 rounded-xl transition-all"
+              className="relative overflow-hidden group px-4 py-4 font-medium text-gray-800 dark:text-white rounded-xl transition-all"
               onClick={() => setIsMenuOpen(false)}
             >
-              <span className="absolute inset-0 bg-[var(--primary)]/10 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+              <span className="absolute inset-0 bg-[var(--primary)]/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></span>
               <span className="relative z-10 flex items-center">
                 <span className="text-xl">{item.name}</span>
                 <svg className="ml-2 w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

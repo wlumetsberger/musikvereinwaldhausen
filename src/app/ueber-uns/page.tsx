@@ -184,7 +184,16 @@ export default function UeberUnsPage() {
     },
     {
       name: "Tenorhorn",
-      members: []
+      members: [
+        { name: "Bernhard Aigner" },
+        { name: "Jonas Gassner" },
+        { name: "Katharina Aigner" },
+        { name: "Manuel Schachinger" },
+        { name: "Mathias Reithmayer" },
+        { name: "Maximilian Berger" },
+        { name: "Nina Überlacker" },
+        { name: "Simon Aigner" },
+      ]
     },
     {
       name: "Posaune",
@@ -198,13 +207,23 @@ export default function UeberUnsPage() {
     },
     {
       name: "Tuba",
-      members: []
+      members: [
+        { name: "Karl Grufeneder" },
+        { name: "Josef Wimmer" },
+        { name: "Sebastian Aigner" },
+        { name: "Daniel Lumetsberger" },
+      ]
     },
     {
       name: "Schlagwerk",
       members: [
         { name: "Christian Aigner" },
-        { name: "Christoph Buchinger" }
+        { name: "Christoph Buchinger" },
+        { name: "Manuel Leonhartsberger" },
+        { name: "Michael Schlager" },
+        { name: "Moritz Meindl" },
+        { name: "Robert Gassner" },
+        { name: "Wolfgang Aigner" },
       ]
     }
   ];

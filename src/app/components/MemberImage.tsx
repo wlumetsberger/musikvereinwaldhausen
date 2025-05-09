@@ -1,83 +1,102 @@
-"use client";
-
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
-interface MemberImageProps {
+type MemberImageProps = {
   name: string;
-  section: string;
+  section?: string;
   alt?: string;
-  size: number;
-  filename?: string; // Option to provide full filename if needed
-}
+  size?: number;
+  filename?: string;
+};
 
-export default function MemberImage({ name, section, alt, size, filename }: MemberImageProps) {
-  const [hasError, setHasError] = useState(false);
-  const [currentExtension, setCurrentExtension] = useState('.jpg');
+const MemberImage: React.FC<MemberImageProps> = ({ 
+  name, 
+  section = "", 
+  alt = "", 
+  size = 40, 
+  filename 
+}) => {
+  const [isError, setIsError] = useState(false);
+
+  // Create a sanitized filename from the name or use provided filename
+  const sanitizedName = filename || name.replace(/[^\w\s]/gi, '');
   
-  // Map section names to folder names in the public/mitglieder directory
-  const sectionMap: Record<string, string> = {
-    "Obmann": "obmann",
-    "Kapellmeister": "kapellmeister",
-    "Stabführer": "stabfuehrer",
-    "MarketenderInnen": "marketender",
-    "Querflöte": "quersfloete",
-    "Oboe": "oboe",
-    "Klarinette": "klarinette",
-    "Fagott": "fagott",
-    "Saxophon": "saxophon",
-    "Trompete": "trompete",
-    "Flügelhorn": "fluegelhorn",
-    "Horn": "horn",
-    "Tenorhorn": "tenorhorn",
-    "Posaune": "posaune",
-    "Tuba": "tuba",
-    "Schlagwerk": "schlagwerk"
+  // Create initials from name for fallback display
+  const initials = name
+    .split(' ')
+    .map(part => part[0])
+    .join('');
+
+  // Map section names to folder names
+  const getFolderName = (sectionName: string): string => {
+    const folderMap: {[key: string]: string} = {
+      "Obmann": "vorstand",
+      "Kapellmeister": "vorstand",
+      "Stabführer": "vorstand",
+      "Querflöte": "quersfloete",
+      "Oboe": "oboe",
+      "Klarinette": "klarinette",
+      "Fagott": "fagott",
+      "Saxophon": "saxophon",
+      "Trompete": "trompete",
+      "Flügelhorn": "fluegelhorn",
+      "Horn": "horn",
+      "Tenorhorn": "tenorhorn",
+      "Posaune": "posaune",
+      "Tuba": "tuba",
+      "Schlagwerk": "schlagwerk",
+      "MarketenderInnen": "marketenderinnen"
+    };
+    
+    return folderMap[sectionName] || sectionName.toLowerCase().replace(/[^\w]/g, "");
   };
-  
-  // Get the folder name for the section
-  const folderName = sectionMap[section] || section.toLowerCase();
-  
-  // Use provided filename or just the name
-  const imageFilename = filename || name;
-  
-  // Create image URL path from the public directory
-  const imagePath = `/mitglieder/${folderName}/${imageFilename}${currentExtension}`;
-  
-  // Placeholder for missing images (create a generic avatar)
-  const initials = name.split(' ').map(part => part[0]).join('');
-  
-  const handleError = () => {
-    // Try PNG if JPG fails, and if PNG fails use a placeholder
-    if (currentExtension === '.jpg') {
-      setCurrentExtension('.png');
-    } else {
-      setHasError(true);
-    }
-  };
-  
+
+  // Show initials circle if image fails to load
+  if (isError) {
+    return (
+      <div 
+        style={{ 
+          width: size, 
+          height: size,
+          borderRadius: '50%',
+          backgroundColor: 'var(--primary)',
+          color: 'white',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: Math.max(size * 0.4, 12),
+          fontWeight: 'bold'
+        }}
+      >
+        {initials}
+      </div>
+    );
+  }
+
   return (
-    <div className={`h-${size} w-${size} rounded-full overflow-hidden shadow-md flex-shrink-0 relative`}>
-      {hasError ? (
-        // Show stylish placeholder with initials when image is not found
-        <div 
-          className={`h-full w-full flex items-center justify-center bg-gradient-to-br from-gray-300 to-gray-200 dark:from-gray-700 dark:to-gray-800 text-gray-700 dark:text-gray-300 font-bold`}
-        >
-          {initials}
-        </div>
-      ) : (
-        <div className="relative w-full h-full">
-          <Image 
-            src={imagePath}
-            alt={alt || name}
-            fill
-            sizes={`${size * 4}px`}
-            className="object-cover"
-            style={{ objectPosition: 'center 30%' }} // Position to show faces better
-            onError={handleError}
-          />
-        </div>
-      )}
+    <div style={{ position: 'relative', width: size, height: size, borderRadius: '50%', overflow: 'hidden' }}>
+      <Image
+        src={`/mitglieder/${getFolderName(section)}/${sanitizedName}.jpg`}
+        alt={alt || `${name} - ${section}`}
+        fill
+        sizes={`${size}px`}
+        style={{
+          objectFit: 'cover',
+        }}
+        onLoadingComplete={(result) => {
+          if (result.naturalWidth === 0) {
+            // Image failed to load
+            setIsError(true);
+          }
+        }}
+        onError={() => {
+          setIsError(true);
+        }}
+        // Add unoptimized to bypass Image Optimization for local images
+        unoptimized={true}
+      />
     </div>
   );
-}
+};
+
+export default MemberImage;

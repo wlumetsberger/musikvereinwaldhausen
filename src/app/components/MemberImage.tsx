@@ -30,9 +30,9 @@ const MemberImage: React.FC<MemberImageProps> = ({
   // Map section names to folder names
   const getFolderName = (sectionName: string): string => {
     const folderMap: {[key: string]: string} = {
-      "Obmann": "vorstand",
-      "Kapellmeister": "vorstand",
-      "Stabführer": "vorstand",
+      "Obmann": "obmann",
+      "Kapellmeister": "kapellmeister",
+      "Stabführer": "stabfuehrer",
       "Querflöte": "quersfloete",
       "Oboe": "oboe",
       "Klarinette": "klarinette",

@@ -90,15 +90,15 @@ export default async function Home() {
                     </Link>
                     
                     <Link 
-                      href="/mitglied-werden" 
+                      href="/hoerproben" 
                       className="relative group overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-[var(--secondary)] to-[var(--secondary-dark)] rounded-xl"></div>
                       <div className="relative z-10 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-transparent transition-colors duration-300 rounded-xl px-6 py-3 text-white flex items-center shadow-md">
                         <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path>
                         </svg>
-                        <span className="font-medium">Mitglied werden</span>
+                        <span className="font-medium">Hörproben</span>
                         <svg className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                         </svg>

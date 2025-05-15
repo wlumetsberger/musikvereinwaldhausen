@@ -30,15 +30,14 @@ const Header = () => {
               Musikverein Waldhausen
             </span>
           </Link>
-          
-          {/* Desktop Navigation */}
+            {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1">
             {[
               { name: 'Startseite', href: '/' },
               { name: 'Termine', href: '/termine' },
               { name: 'News', href: '/news' },
               { name: 'Über uns', href: '/ueber-uns' },
-              { name: 'Galerie', href: '/galerie' },
+              { name: 'Hörproben', href: '/hoerproben' },
               { name: 'Kontakt', href: '/kontakt' }
             ].map((item) => (
               <Link 
@@ -79,8 +78,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      
-      {/* Mobile Navigation with modern transition */}
+        {/* Mobile Navigation with modern transition */}
       <div className={`fixed inset-0 bg-white dark:bg-gray-900 shadow-xl z-10 transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden pt-20`}>
         <div className="container mx-auto px-4 py-8 space-y-2 flex flex-col h-full">
           {[
@@ -88,7 +86,7 @@ const Header = () => {
             { name: 'Termine', href: '/termine' },
             { name: 'News', href: '/news' },
             { name: 'Über uns', href: '/ueber-uns' },
-            { name: 'Galerie', href: '/galerie' },
+            { name: 'Hörproben', href: '/hoerproben' },
             { name: 'Kontakt', href: '/kontakt' }
           ].map((item) => (
             <Link 

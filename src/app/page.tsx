@@ -118,7 +118,7 @@ export default async function Home() {
               {/* Main image container - now using CD.JPG */}
               <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl">
                 <Image 
-                  src="/images/heading.jpg"
+                  src="/images/heading3.jpg"
                   alt="Musikverein Waldhausen CD"
                   fill
                   priority

@@ -94,7 +94,7 @@ const Header = () => {
             <Link 
               key={item.name} 
               href={item.href}
-              className="relative overflow-hidden group px-4 py-4 font-medium text-gray-800 dark:text-white rounded-xl transition-all"
+              className="relative group px-4 py-4 font-medium text-gray-800 dark:text-white rounded-xl transition-all bg-gray-100 dark:bg-gray-800 shadow-md hover:shadow-lg"
               onClick={() => setIsMenuOpen(false)}
             >
               <span className="absolute inset-0 bg-[var(--primary)]/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></span>

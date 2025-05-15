@@ -76,9 +76,10 @@ const Footer = () => {
                     </svg>
                   </div>
                   <div className="text-gray-600 dark:text-gray-300">
-                    Musikhalle Waldhausen<br />
-                    Musterstraße 123<br />
-                    12345 Waldhausen
+                    Musikverein Waldhausen<br />
+                    Obmann: Stefan Aigner<br />
+                    Markt 65<br />
+                    4391 Waldhausen im Strudengau
                   </div>
                 </div>
                 
@@ -88,8 +89,8 @@ const Footer = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <a href="mailto:info@musikverein-waldhausen.de" className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary)] transition-colors">
-                    info@musikverein-waldhausen.de
+                  <a href="mailto:office@mv-waldhausen.at" className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary)] transition-colors">
+                    office@mv-waldhausen.at
                   </a>
                 </div>
                 
@@ -100,7 +101,7 @@ const Footer = () => {
                     </svg>
                   </div>
                   <a href="tel:+491234567890" className="text-gray-600 dark:text-gray-300 hover:text-[var(--primary)] transition-colors">
-                    +49 1234 567890
+                    +43 664 6264761
                   </a>
                 </div>
               </address>

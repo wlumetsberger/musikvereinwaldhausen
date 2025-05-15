@@ -1,15 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getAllNews } from "./services/newsService";
+import { getFirstFiveNews } from "./services/newsService";
 import { getUpcomingEvents } from "./services/eventsService";
 
 export default async function Home() {
   // Fetch data for our page
-  const newsItems = await getAllNews();
+  const newsItems = await getFirstFiveNews(); // Now only getting the first 3 news items for the homepage
   const upcomingEvents = await getUpcomingEvents();
+
+  // Animation style for news items
+  const animationStyle = `
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `;
 
   return (
     <div className="flex flex-col space-y-32">
+      <style dangerouslySetInnerHTML={{ __html: animationStyle }}></style>
       {/* Hero Section - Updated with new CD image and Against font */}
       <section className="relative overflow-visible">
         {/* Background decorative elements */}
@@ -109,7 +118,7 @@ export default async function Home() {
               {/* Main image container - now using CD.JPG */}
               <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-2xl">
                 <Image 
-                  src="/images/cd.JPG"
+                  src="/images/heading.jpg"
                   alt="Musikverein Waldhausen CD"
                   fill
                   priority
@@ -275,7 +284,7 @@ export default async function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingEvents.map((event) => (
+            {upcomingEvents.slice(0, 5).map((event) => (
               <div key={event.id} className="group relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)]/10 to-[var(--primary)]/30 rounded-3xl -z-10 transform transition-transform duration-300 group-hover:scale-105"></div>
                 <div className="relative backdrop-blur-sm bg-white/80 dark:bg-black/40 p-8 rounded-3xl border border-white/20 shadow-xl h-full flex flex-col">
@@ -306,7 +315,7 @@ export default async function Home() {
                   <p className="text-gray-600 dark:text-gray-300 mb-6 flex-grow">{event.description}</p>
                   
                   <Link 
-                    href={`/termine/${event.id}`} 
+                    href={`/termine?event=${event.id}`} 
                     className="self-start inline-flex items-center group/link"
                   >
                     <span className="relative inline-block text-[var(--primary)] font-semibold">
@@ -339,6 +348,7 @@ export default async function Home() {
                 </span>
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold">Aktuelle Neuigkeiten</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">Die neuesten 3 Artikel</p>
             </div>
             
             <Link 
@@ -353,41 +363,54 @@ export default async function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsItems.map((news) => (
-              <div key={news.artikelnr} className="group relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--secondary)]/10 to-[var(--secondary)]/30 rounded-3xl -z-10 transform transition-transform duration-300 group-hover:scale-105"></div>
-                <div className="relative backdrop-blur-sm bg-white/80 dark:bg-black/40 p-8 rounded-3xl border border-white/20 shadow-xl h-full flex flex-col">
-                  <span className="inline-block py-1 px-3 bg-[var(--secondary)]/10 text-[var(--secondary)] rounded-full text-sm font-semibold mb-6">
-                    Neuigkeit
-                  </span>
-                  
-                  <h3 className="text-xl font-bold text-[var(--secondary)] mb-4 group-hover:text-[var(--secondary-dark)] transition-colors">
-                    {news.titel}
-                  </h3>
-                  
-                  <div className="bg-[var(--accent)] p-4 rounded-xl mb-5 italic text-gray-600 dark:text-gray-300 text-sm">
-                    &ldquo;{news.sample}&rdquo;
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-300 line-clamp-3 mb-6 flex-grow">
-                    {news.text}
-                  </p>
-                  
-                  <div className="pt-2">
-                    <Link 
-                      href={`/news/${news.artikelnr}`} 
-                      className="inline-flex items-center group/link"
-                    >
-                      <span className="relative inline-block text-[var(--secondary)] font-semibold">
+            {newsItems.map((news, index) => (
+              <div 
+                key={news.articleId}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform transition-transform hover:-translate-y-2 group"
+                style={{
+                  opacity: 0,
+                  animation: 'fadeIn 0.3s forwards',
+                  animationDelay: `${index * 0.1}s`
+                }}
+              >
+                <Link href={`/news?article=${news.articleId}`} className="block h-full">
+                  {news.pictureUrl && news.pictureUrl !== "" ? (
+                    <div className="relative h-48 w-full">
+                      <Image
+                        src={news.pictureUrl.replace('../', '/')}
+                        alt={news.titel}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        style={{ objectPosition: 'center', objectFit: 'contain' }}
+
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-48 bg-gradient-to-r from-[var(--primary)]/20 to-[var(--secondary)]/20 flex items-center justify-center">
+                      <span className="text-gray-500 dark:text-gray-400">Kein Bild verfügbar</span>
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className="inline-block py-1 px-3 bg-[var(--secondary)]/10 text-[var(--secondary)] rounded-full text-sm font-semibold mb-4">
+                      Neuigkeit
+                    </div>
+                    <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white line-clamp-2">
+                      {news.titel}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                      {news.sample}
+                    </p>
+                    <div className="flex justify-end">
+                      <span className="text-[var(--primary)] font-medium hover:underline flex items-center group-hover:text-[var(--primary-dark)]">
                         Weiterlesen
-                        <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[var(--secondary)] transform origin-left transition-transform scale-x-0 group-hover/link:scale-x-100"></span>
+                        <svg className="ml-1 w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
                       </span>
-                      <svg className="ml-1 w-5 h-5 text-[var(--secondary)] transform transition-transform group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                      </svg>
-                    </Link>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>

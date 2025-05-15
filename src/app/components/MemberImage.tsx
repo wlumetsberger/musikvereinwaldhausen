@@ -7,19 +7,21 @@ type MemberImageProps = {
   alt?: string;
   size?: number;
   filename?: string;
+  quality?: number;
 };
 
 const MemberImage: React.FC<MemberImageProps> = ({ 
   name, 
   section = "", 
   alt = "", 
-  size = 40, 
-  filename 
+  size = 80,  // Default to larger size
+  filename,
+  quality = 85 // Default quality
 }) => {
   const [isError, setIsError] = useState(false);
 
   // Create a sanitized filename from the name or use provided filename
-  const sanitizedName = filename || name.replace(/[^\w\s]/gi, '');
+  const sanitizedName = filename  || name//|| name.replace(/[^\w\s]/gi, '');
   
   // Create initials from name for fallback display
   const initials = name
@@ -30,7 +32,7 @@ const MemberImage: React.FC<MemberImageProps> = ({
   // Map section names to folder names
   const getFolderName = (sectionName: string): string => {
     const folderMap: {[key: string]: string} = {
-      "Obmann": "obmann",
+     "Obmann": "obmann",
       "Kapellmeister": "kapellmeister",
       "Stabführer": "stabfuehrer",
       "Querflöte": "quersfloete",
@@ -74,15 +76,21 @@ const MemberImage: React.FC<MemberImageProps> = ({
   }
 
   return (
-    <div style={{ position: 'relative', width: size, height: size, borderRadius: '50%', overflow: 'hidden' }}>
+    <div style={{ 
+      position: 'relative', 
+      width: size, 
+      height: size, 
+      borderRadius: '50%', 
+      overflow: 'hidden',
+      border: '1px solid rgba(0,0,0,0.1)', // Add subtle border for better visual appearance
+    }}>
       <Image
         src={`/mitglieder/${getFolderName(section)}/${sanitizedName}.jpg`}
         alt={alt || `${name} - ${section}`}
-        fill
-        sizes={`${size}px`}
-        style={{
-          objectFit: 'cover',
-        }}
+        width={size * 3} // Use explicit width/height instead of fill
+        height={size * 3} // Make source 3x larger than display size for better quality
+        quality={100} // Maximum quality
+        
         onLoadingComplete={(result) => {
           if (result.naturalWidth === 0) {
             // Image failed to load
@@ -92,8 +100,7 @@ const MemberImage: React.FC<MemberImageProps> = ({
         onError={() => {
           setIsError(true);
         }}
-        // Add unoptimized to bypass Image Optimization for local images
-        unoptimized={true}
+        unoptimized={true} // Bypass Next.js image optimization
       />
     </div>
   );

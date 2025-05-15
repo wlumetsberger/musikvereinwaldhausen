@@ -189,7 +189,7 @@ export default function UeberUnsPage() {
         { name: "Jonas Gassner" },
         { name: "Katharina Aigner" },
         { name: "Manuel Schachinger" },
-        { name: "Mathias Reithmayer" },
+        { name: "Matthias Reithmayer" },
         { name: "Maximilian Berger" },
         { name: "Nina Überlacker" },
         { name: "Simon Aigner" },
@@ -359,7 +359,7 @@ export default function UeberUnsPage() {
                 FÜHRUNGSTEAM
               </span>
             </div>
-            <h2 className="text-4xl font-bold">Unser Vereinsvorstand</h2>
+            <h2 className="text-4xl font-bold">Unsere Leitung</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-300">
               Diese engagierten Personen leiten den Musikverein Waldhausen und prägen maßgeblich unser Vereinsleben.
             </p>
@@ -374,12 +374,13 @@ export default function UeberUnsPage() {
                   <ul className="space-y-6">
                     {section.members.map((member) => (
                       <li key={member.name} className="flex items-center">
-                        <div className="mr-4">
+                        <div className="mr-4 flex-shrink-0">
                           <MemberImage 
                             name={member.name}
                             section={section.position}
                             alt={member.name}
-                            size={140}
+                            size={200} // Increased size to reduce pixelation
+                            quality={100} // Added higher quality setting
                           />
                         </div>
                         <div>
@@ -420,15 +421,16 @@ export default function UeberUnsPage() {
                   <div className={`absolute inset-0 bg-gradient-to-br ${getColorClass(index).bg} rounded-3xl -z-10 transform transition-transform duration-300 group-hover:scale-105`}></div>
                   <div className="relative backdrop-blur-sm bg-white/80 dark:bg-black/40 p-8 rounded-3xl border border-white/20 shadow-xl h-full flex flex-col">
                     <h3 className={`text-2xl font-bold ${getColorClass(index).text} mb-4`}>{section.name}</h3>
-                    <ul className="space-y-4">
+                    <ul className="grid grid-cols-1 gap-4">
                       {section.members.map((member) => (
                         <li key={member.name} className="flex items-center">
-                          <div className="mr-3">
+                          <div className="mr-3 flex-shrink-0">
                             <MemberImage 
                               name={member.name}
                               section={section.name}
                               alt={member.name}
-                              size={140}
+                              size={60} // Increased size to reduce pixelation
+                              quality={100} // Added higher quality setting
                               filename={member.filename}
                             />
                           </div>

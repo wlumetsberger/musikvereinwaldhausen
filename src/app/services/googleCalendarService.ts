@@ -1,22 +1,16 @@
-// iCalendar integration for Google Calendar
 import { Event } from './eventsService';
 import ical from 'ical';
 import fetch from 'node-fetch';
 
-// iCalendar URL for the Musikverein Waldhausen's public calendar
 const ICAL_URL = 'https://calendar.google.com/calendar/ical/mv.waldhausenimstrudengau%40gmail.com/public/basic.ics';
 
-// Format an iCalendar event to match our Event interface
 function formatICalEvent(icalEvent: any): Event | null {
   try {
-    // Skip events without start date or summary
     if (!icalEvent.start || !icalEvent.summary) {
       return null;
     }
 
-    // Extract date information
     const startDate = new Date(icalEvent.start);
-    // Format the date in German style (DD. Month YYYY)
     const options: Intl.DateTimeFormatOptions = { 
       day: 'numeric', 
       month: 'long', 
@@ -24,7 +18,6 @@ function formatICalEvent(icalEvent: any): Event | null {
     };
     const formattedDate = startDate.toLocaleDateString('de-DE', options);
     
-    // Add time information if available
     let formattedDateTime = formattedDate;
     if (icalEvent.start && icalEvent.start.getHours() !== 0) {
       const timeOptions: Intl.DateTimeFormatOptions = {
@@ -35,16 +28,11 @@ function formatICalEvent(icalEvent: any): Event | null {
       formattedDateTime = `${formattedDate}, ${timeString} Uhr`;
     }
 
-    // Extract location or provide a default
     const location = icalEvent.location || 'Ort wird noch bekanntgegeben';
     
-    // Extract description or provide a default
     let description = icalEvent.description || 'Keine Details verfügbar';
-    
-    // Clean up description (remove HTML tags if present)
     description = description.replace(/<[^>]*>?/gm, '');
 
-    // Create event object matching our interface
     return {
       id: icalEvent.uid || String(startDate.getTime()),
       title: icalEvent.summary,
@@ -58,10 +46,8 @@ function formatICalEvent(icalEvent: any): Event | null {
   }
 }
 
-// Fetch upcoming events from Google Calendar via iCal
 export async function fetchCalendarEvents(): Promise<Event[]> {
   try {
-    // Fetch the iCal data from the public URL
     const response = await fetch(ICAL_URL);
     
     if (!response.ok) {
@@ -70,22 +56,18 @@ export async function fetchCalendarEvents(): Promise<Event[]> {
     
     const icalData = await response.text();
     
-    // Parse the iCal data
     const parsedData = ical.parseICS(icalData);
-    // Filter for VEVENT entries (actual calendar events)
     const events = Object.values(parsedData)
       .filter((event: any) => event.type === 'VEVENT')
       .map((event: any) => formatICalEvent(event))
       .filter((event: any) => event !== null) as Event[];
     
-    // Filter for future events only
     const today = new Date();
     const futureEvents = events.filter(event => {
       const eventDate = getDateFromGermanFormat(event.date);
       return eventDate >= today;
     });
     
-    // Sort by date (earliest first)
     return futureEvents.sort((a, b) => {
       const dateA = getDateFromGermanFormat(a.date);
       const dateB = getDateFromGermanFormat(b.date);
@@ -96,7 +78,6 @@ export async function fetchCalendarEvents(): Promise<Event[]> {
   }
 }
 
-// Helper function to parse German formatted dates
 function getDateFromGermanFormat(germanDate: string): Date {
   const parts = germanDate.split(' ');
   const day = parseInt(parts[0]);

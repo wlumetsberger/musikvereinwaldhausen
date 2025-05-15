@@ -1,5 +1,4 @@
 @import "tailwindcss";
-/* Remove Google fonts import and use local font */
 @font-face {
   font-family: 'Against';
   src: url('/against regular.ttf') format('truetype');
@@ -19,11 +18,9 @@
   --card-bg: #ffffff;
   --border-color: rgba(0, 0, 0, 0.06);
   
-  /* Updated fonts with Against as primary */
   --font-heading: 'Against', 'Arial Black', 'Helvetica Neue', sans-serif;
   --font-body: 'Arial', 'Helvetica Neue', sans-serif;
   
-  /* Additional modern variables */
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.08);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.04), 0 4px 6px rgba(0,0,0,0.08);

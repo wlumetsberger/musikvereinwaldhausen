@@ -20,16 +20,13 @@ const MemberImage: React.FC<MemberImageProps> = ({
 }) => {
   const [isError, setIsError] = useState(false);
 
-  // Create a sanitized filename from the name or use provided filename
-  const sanitizedName = filename  || name//|| name.replace(/[^\w\s]/gi, '');
+  const sanitizedName = filename  || name
   
-  // Create initials from name for fallback display
   const initials = name
     .split(' ')
     .map(part => part[0])
     .join('');
 
-  // Map section names to folder names
   const getFolderName = (sectionName: string): string => {
     const folderMap: {[key: string]: string} = {
      "Obmann": "obmann",
@@ -53,7 +50,6 @@ const MemberImage: React.FC<MemberImageProps> = ({
     return folderMap[sectionName] || sectionName.toLowerCase().replace(/[^\w]/g, "");
   };
 
-  // Show initials circle if image fails to load
   if (isError) {
     return (
       <div 
@@ -82,25 +78,24 @@ const MemberImage: React.FC<MemberImageProps> = ({
       height: size, 
       borderRadius: '50%', 
       overflow: 'hidden',
-      border: '1px solid rgba(0,0,0,0.1)', // Add subtle border for better visual appearance
+      border: '1px solid rgba(0,0,0,0.1)', 
     }}>
       <Image
         src={`/mitglieder/${getFolderName(section)}/${sanitizedName}.jpg`}
         alt={alt || `${name} - ${section}`}
-        width={size * 3} // Use explicit width/height instead of fill
-        height={size * 3} // Make source 3x larger than display size for better quality
-        quality={100} // Maximum quality
+        width={size * 3} 
+        height={size * 3} 
+        quality={100} 
         
         onLoadingComplete={(result) => {
           if (result.naturalWidth === 0) {
-            // Image failed to load
             setIsError(true);
           }
         }}
         onError={() => {
           setIsError(true);
         }}
-        unoptimized={true} // Bypass Next.js image optimization
+        unoptimized={true} 
       />
     </div>
   );

@@ -12,15 +12,8 @@ export interface MusicCategory {
   items: MusicItem[];
 }
 
-// This is a server-side function to get music data from the file system
 export async function getMusicData(): Promise<MusicCategory[]> {
   try {
-    // Define hardcoded data for now
-    // In a real implementation, you might want to:
-    // 1. Read directories dynamically
-    // 2. Extract metadata from MP3s
-    // 3. Use a database or API to manage descriptions
-    
     return [
       {
         name: "Jugendorchester Waldis",

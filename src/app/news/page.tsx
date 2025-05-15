@@ -5,13 +5,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CSSProperties } from 'react';
 
-// Define animation styles
 const fadeInAnimation: CSSProperties = {
   opacity: 0,
   animation: 'fadeIn 0.3s forwards',
 };
 
-// Define keyframes in a style tag that will be injected
 const animationStyle = `
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(5px); }
@@ -19,7 +17,6 @@ const animationStyle = `
 }
 `;
 
-// Helper function to highlight search terms in text
 const highlightText = (text: string, query: string): ReactNode | string => {
   if (!query || !text) return text;
   
@@ -45,7 +42,6 @@ const highlightText = (text: string, query: string): ReactNode | string => {
   );
 };
 
-// Define the article type based on your JSON structure
 interface NewsArticle {
   articleId: string;
   titel: string;
@@ -55,13 +51,11 @@ interface NewsArticle {
 }
 
 export default function NewsPage() {
-  // State for articles
   const [articles, setArticles] = useState<NewsArticle[]>([]);
   const [filteredArticles, setFilteredArticles] = useState<NewsArticle[]>([]);
   const [selectedArticle, setSelectedArticle] = useState<NewsArticle | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  // Function to get URL query parameters
   const getQueryParam = (param: string): string | null => {
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
@@ -70,33 +64,24 @@ export default function NewsPage() {
     return null;
   };
 
-  // Fetch articles from a local JSON file
   useEffect(() => {
-    // In a real application, you would fetch this from an API
-    // For now, we'll use the data directly from the static file
     import('../../data/news.json')
       .then((data) => {
         setArticles(data.default);
         setFilteredArticles(data.default);
-        
-        // Check if there's an article ID in the URL query parameter
         const articleIdFromUrl = getQueryParam('article');
         
         if (articleIdFromUrl) {
-          // Find the article with matching ID
           const selectedArticleFromUrl = data.default.find(
             (article: NewsArticle) => article.articleId === articleIdFromUrl
           );
           
-          // If found, select it
           if (selectedArticleFromUrl) {
             setSelectedArticle(selectedArticleFromUrl);
           } else {
-            // If not found, select the first article
             setSelectedArticle(data.default[0]);
           }
         } else if (data.default && data.default.length > 0) {
-          // If no article ID in URL, select the first article
           setSelectedArticle(data.default[0]);
         }
         
@@ -108,7 +93,6 @@ export default function NewsPage() {
       });
   }, []);
 
-  // Function to handle search
   useEffect(() => {
     if (searchQuery.trim() === '') {
       setFilteredArticles(articles);
@@ -124,15 +108,12 @@ export default function NewsPage() {
     
     setFilteredArticles(filtered);
     
-    // If we have results and the current selection is not in the filtered results,
-    // select the first filtered article
     if (filtered.length > 0 && 
         selectedArticle && 
         !filtered.some(article => article.articleId === selectedArticle.articleId)) {
       setSelectedArticle(filtered[0]);
     }
   }, [searchQuery, articles, selectedArticle]);
-  // Function to update URL with the selected article without refreshing the page
   const updateUrlWithArticle = (articleId: string) => {
     if (typeof window !== 'undefined') {
       const url = new URL(window.location.href);
@@ -141,30 +122,23 @@ export default function NewsPage() {
     }
   };
   
-  // Function to handle article selection
   const handleArticleClick = (article: NewsArticle) => {
     setSelectedArticle(article);
-    // Update the URL with the selected article ID
     updateUrlWithArticle(article.articleId);
     
-    // Scroll to top on mobile
     if (window.innerWidth < 768) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  // Function to handle search input change
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value);
   };
-  // Function to clear search
   const clearSearch = () => {
     setSearchQuery('');
   };
 
-  // Function to handle keyboard events for the search input
   const handleSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    // Handle escape key to clear search
     if (event.key === 'Escape') {
       clearSearch();
     }

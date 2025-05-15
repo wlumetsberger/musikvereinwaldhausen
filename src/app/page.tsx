@@ -4,11 +4,9 @@ import { getFirstFiveNews } from "./services/newsService";
 import { getUpcomingEvents } from "./services/eventsService";
 
 export default async function Home() {
-  // Fetch data for our page
-  const newsItems = await getFirstFiveNews(); // Now only getting the first 3 news items for the homepage
+  const newsItems = await getFirstFiveNews(); 
   const upcomingEvents = await getUpcomingEvents();
 
-  // Animation style for news items
   const animationStyle = `
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(5px); }

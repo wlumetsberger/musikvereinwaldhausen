@@ -4,14 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MemberImage from '../components/MemberImage';
 
-// Types for member objects
 type Member = {
   name: string;
   role?: string;
   filename?: string;
 };
 
-// Define interface for section objects
 interface Section {
   name: string;
   members: Member[];
@@ -22,7 +20,6 @@ interface LeadershipSection {
   members: Member[];
 }
 
-// Dynamic color assignment for sections based on index
 const getColorClass = (index: number): { bg: string; text: string } => {
   const colorClasses = [
     { bg: "from-[var(--primary)]/10 to-[var(--primary)]/30", text: "text-[var(--primary)]" },
@@ -32,7 +29,6 @@ const getColorClass = (index: number): { bg: string; text: string } => {
 };
 
 export default function UeberUnsPage() {
-  // Timeline milestones in the history of the music association
   const historyMilestones = [
     {
       year: "1880",
@@ -66,7 +62,6 @@ export default function UeberUnsPage() {
     }
   ];
 
-  // Orchestra leadership - updated with actual names from image files
   const leadership: LeadershipSection[] = [
     {
       position: "Obmann",
@@ -93,7 +88,6 @@ export default function UeberUnsPage() {
     }
   ];
   
-  // Orchestra sections with their members - updated with actual names from image files
   const orchestraSections: Section[] = [
     {
         name: "MarketenderInnen",

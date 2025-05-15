@@ -14,7 +14,6 @@ export default function TermineClient({ initialEvents }: TermineClientProps) {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [searchFilter, setSearchFilter] = useState<string>('');
   
-  // Filter events based on search query
   const filteredEvents = searchFilter.trim() !== '' 
     ? events.filter(event => 
         event.title.toLowerCase().includes(searchFilter.toLowerCase()) ||
@@ -23,7 +22,6 @@ export default function TermineClient({ initialEvents }: TermineClientProps) {
       )
     : events;
 
-  // Function to get URL query parameters
   const getQueryParam = (param: string): string | null => {
     if (typeof window !== 'undefined') {
       const urlParams = new URLSearchParams(window.location.search);
@@ -32,7 +30,6 @@ export default function TermineClient({ initialEvents }: TermineClientProps) {
     return null;
   };
 
-  // Function to update URL with the selected event without refreshing the page
   const updateUrlWithEvent = (eventId: string | number) => {
     if (typeof window !== 'undefined') {
       const url = new URL(window.location.href);
@@ -41,35 +38,26 @@ export default function TermineClient({ initialEvents }: TermineClientProps) {
     }
   };
 
-  // Initialize selected event based on URL parameter or default to first event
   useEffect(() => {
     const eventIdFromUrl = getQueryParam('event');
     
     if (eventIdFromUrl) {
-      // Find the event with matching ID
       const selectedEventFromUrl = events.find(
         (event) => event.id.toString() === eventIdFromUrl
       );
       
-      // If found, select it
       if (selectedEventFromUrl) {
         setSelectedEvent(selectedEventFromUrl);
       } else if (events.length > 0) {
-        // If not found, select the first event
         setSelectedEvent(events[0]);
       }
     } else if (events.length > 0) {
-      // If no event ID in URL, select the first event
       setSelectedEvent(events[0]);
     }
   }, [events]);
 
-  // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchFilter(e.target.value);
-    
-    // If filtered list has events but selected event is not in filtered list,
-    // update the selected event to the first filtered event
     if (e.target.value.trim() !== '') {
       const newFilteredEvents = events.filter(event => 
         event.title.toLowerCase().includes(e.target.value.toLowerCase()) ||
@@ -80,25 +68,19 @@ export default function TermineClient({ initialEvents }: TermineClientProps) {
       if (newFilteredEvents.length > 0) {
         const selectedStillVisible = newFilteredEvents.some(event => event.id === selectedEvent?.id);
         if (!selectedStillVisible) {
-          // Select the first filtered event
           setSelectedEvent(newFilteredEvents[0]);
-          // Update URL
           updateUrlWithEvent(newFilteredEvents[0].id);
         }
       }
     } else if (events.length > 0 && !selectedEvent) {
-      // If search is cleared and no event is selected, select the first event
       setSelectedEvent(events[0]);
       updateUrlWithEvent(events[0].id);
     }
   };
-  // Function to handle event selection
   const handleEventClick = (event: Event) => {
     setSelectedEvent(event);
-    // Update the URL with the selected event ID
     updateUrlWithEvent(event.id);
     
-    // Scroll to top on mobile
     if (window.innerWidth < 768) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }

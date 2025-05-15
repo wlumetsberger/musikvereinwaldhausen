@@ -1,10 +1,8 @@
 import { Suspense } from "react";
 import { getMusicData, MusicCategory, MusicItem } from "../services/audioService";
 
-// Import the client component
 import MusicCard from "./MusicCard";
 
-// Main Page Component
 export default function HoerprobePage() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -15,7 +13,6 @@ export default function HoerprobePage() {
   );
 }
 
-// Loading component
 function Loading() {
   return (
     <div className="container mx-auto px-4 py-8">
@@ -24,7 +21,6 @@ function Loading() {
   );
 }
 
-// Server Component to fetch music data
 async function MusicContent() {
   const musicData = await getMusicData();
 

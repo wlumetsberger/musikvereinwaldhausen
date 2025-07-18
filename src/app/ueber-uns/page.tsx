@@ -36,11 +36,6 @@ export default function UeberUnsPage() {
       description: "Gründung des Musikvereins Waldhausen durch engagierte Bürger der Gemeinde."
     },
     {
-      year: "1925",
-      title: "Erste größere Auftritte",
-      description: "Der Verein etabliert sich fest in der Region und beginnt mit regelmäßigen Konzertauftritten."
-    },
-    {
       year: "1955",
       title: "75-jähriges Jubiläum",
       description: "Großes Festwochenende mit zahlreichen befreundeten Musikvereinen aus der Region."
@@ -253,7 +248,7 @@ export default function UeberUnsPage() {
       </section>
 
       {/* Historical Milestones */}
-      <section className="container mx-auto px-4">
+      <section className="container mx-auto px-4" hidden={true}>
         <div className="relative">
           {/* Decorative background elements */}
           <div className="absolute top-1/3 right-0 w-64 h-64 bg-[var(--primary)] opacity-5 rounded-full blur-3xl -z-10"></div>

@@ -84,6 +84,11 @@ Die wichtigsten Komponenten der Website sind:
 
 Die Website ist für das Deployment auf Azure Static Web Apps konfiguriert. Eine detaillierte Anleitung für das Deployment finden Sie in der Datei `.github/azure-deployment-guide.md`.
 
+> **Hinweis:**  
+> Bei Deployment auf Azure Static Web Apps kann es vorkommen, dass dynamische Daten (wie Termine/Events) nur zum Build-Zeitpunkt geladen werden.  
+> Um stets aktuelle Events anzuzeigen, empfiehlt sich die Nutzung von [Next.js Incremental Static Regeneration (ISR)](https://nextjs.org/docs/pages/building-your-application/data-fetching/incremental-static-regeneration) (`revalidate`) oder Server Side Rendering (SSR) für die Event-API.  
+> Prüfen Sie, ob Ihre Event-Komponente oder API-Route auf Azure wirklich bei jedem Request neue Daten lädt.
+
 ## Bilder
 
 Für die Verwendung eigener Bilder:

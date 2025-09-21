@@ -104,7 +104,6 @@ export default function UeberUnsPage() {
         { name: "Notburga Aigner" },
         { name: "Romana Fasching" },
         { name: "Sarah Grufeneder" },
-        { name: "Sonja Danzer" },
         { name: "Viktoria Achleitner" },
         { name: "Viktoria Klammer" }
       ]
@@ -126,7 +125,7 @@ export default function UeberUnsPage() {
         { name: "Michaela Fink" },
         { name: "Monika Aigner" },
         { name: "Monika Kamleitner" },
-        { name: "Sonja Aigner" }
+        { name: "Sonja Eder" }
       ]
     },
     {

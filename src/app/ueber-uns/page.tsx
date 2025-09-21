@@ -148,7 +148,13 @@ export default function UeberUnsPage() {
     },
     {
       name: "Trompete",
-      members: []
+      members: [
+        { name: "Andreas Leonhartsberger" },
+        { name: "Florian Heilmann" },
+        { name: "Klemens Aigner" },
+        { name: "Patrick Gruber" },
+        { name: "Thaddäus Mayrhofer" },
+      ]
     },
     {
       name: "Flügelhorn",
@@ -202,6 +208,7 @@ export default function UeberUnsPage() {
         { name: "Daniel Lumetsberger" },
       ]
     },
+
     {
       name: "Schlagwerk",
       members: [

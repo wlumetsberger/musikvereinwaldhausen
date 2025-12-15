@@ -1,6 +1,34 @@
 [
     {
-        "articleId": "63",
+        "articleId": "68",
+        "titel": "Dankeschön & Ausblick",
+        "sample": "Unser Dank gilt allen, die uns im Jahr 2025 begleitet und unterstützt haben.",
+        "pictureUrl": "",
+        "text": "Unser Dank gilt allen, die uns im Jahr 2025 begleitet und unterstützt haben – den Mitgliedern, Eltern, PartnerInnen und Freunden des Musikvereins. Ohne euren Einsatz und eure Unterstützung wäre vieles nicht möglich gewesen. Wir freuen uns darauf, gemeinsam auch im kommenden Jahr neue musikalische Ziele anzugehen.<br/><br/>Der Start ins neue Jahr beginnt mit unserer Jahreshauptversammlung am 17. Jänner 2026. Außerdem möchten wir alle Waldhausener schon jetzt herzlich zu unserem Frühlingskonzert am 28. März 2026 einladen.<br/><br/>Wir wünschen eine ruhige Adventszeit, frohe Festtage und einen guten Start ins Jahr 2026!"
+    },
+    {
+        "articleId": "67",
+        "titel": "Cäcilienmesse 2025",
+        "sample": "Ein weiteres musikalisches Jahr neigt sich langsam dem Ende zu.",
+        "pictureUrl": "../images/articles/Musikermesse2025.jpg",
+        "text": "Ein weiteres musikalisches Jahr neigt sich langsam dem Ende zu. Ein Highlight zum Abschluss ist immer die Cäcilienmesse in der Stiftskirche Waldhausen.<br/><br/>Besonders stolz sind wir auf unseren Nachwuchs im Jugendorchester \"Waldi's\". Ihre Einbindung ins Vereinsleben liegt uns sehr am Herzen, weshalb das Jugendorchester bereits zum zweiten Mal bei der Musikermesse in den Reihen der Musikanten sitzen und mitmusizieren durfte.<br/><br/>Es ist für alle ein besonderes Erlebnis, wenn das Jugendorchester und der Musikverein gemeinsam musizieren dürfen. Wir freuen uns über die starke Jugendgruppe und wünschen ihnen weiterhin viel Freude und Motivation beim Musizieren."
+    },
+    {
+        "articleId": "66",
+        "titel": "Neue Querflöte für den Musikverein – Danke an die Raiffeisenbank Waldhausen",
+        "sample": "Große Freude herrscht beim Musikverein: Eine neue Querflöte konnte angeschafft werden.",
+        "pictureUrl": "../images/articles/SponsoringQuerfloete2025.jpeg",
+        "text": "Große Freude herrscht beim Musikverein: Eine neue Querflöte konnte angeschafft werden – und das dank einer großzügigen Unterstützung der Raiffeisenbank.<br/><br/>Das Instrument wurde übergeben an die seit 2014 aktive Querflötistin Viktoria Klammer, die künftig mit der neuen \\\"Raika-Querflöte\\\" im Verein musizieren wird.<br/><br/>Obmann Stefan Aigner sprach im Rahmen der Übergabe herzliche Dankesworte an die Raiffeisenbank aus: \\\"Solche Förderungen sind für uns von unschätzbarem Wert. Sie zeigen, dass regionale Kultur und auch die Jugendarbeit geschätzt und aktiv unterstützt werden.\\\"<br/><br/>Mit der neuen Querflöte startet der Musikverein nun motiviert in die kommende Saison – und bedankt sich nochmals herzlich bei der Raiffeisenbank Waldhausen für die wertvolle Unterstützung."
+    },
+    {
+        "articleId": "65",
+        "titel": "Übernachtung im Musikheim",
+        "sample": "In der Nacht vom 22. auf den 23. November übernachteten die Kinder des Jugendorchesters Waldi's erstmalig im Musikheim.",
+        "pictureUrl": "../images/articles/waldisuebernachtung2025.jpeg",
+        "text": "In der Nacht vom 22. auf den 23. November übernachteten die Kinder des Jugendorchesters Waldi's erstmalig im Musikheim. Gestartet wurde am späten Nachmittag mit insgesamt 17 Kindern. Gemeinsam meisterten sie verschiedene Stationen, wobei die Fotochallenge für viel Spaß und Lacher sorgte. Ein Höhepunkt des Abends war das Abendessen, bei dem die Kinder ihre eigenen Pizzen nach Belieben gestalten und belegen konnten. Zum Abschluss des Abends schauten alle gemeinsam den Film \\\"Elements\\\", wobei Popcorn natürlich nicht fehlen durfte.<br/><br/>Am nächsten Morgen hatten die Kinder die Möglichkeit, nach einem gemeinsamen Frühstück an der Musikprobe in den Reihen der Musikanten teilzunehmen.<br/><br/>Wir freuen uns über die rege Teilnahme unserer Jungmusiker und die Möglichkeit, ihnen die Begeisterung für die Musik näherzubringen. Falls auch du Interesse am Musikverein hast, kannst du dich gerne bei uns melden. Wir freuen uns über jedes neue Gesicht im Verein!"
+    },
+    {
+        "articleId": "64",
         "titel": "Ein Hoch auf die Freundschaft – Unser Musikerausflug nach Truden",
         "sample": "12.-14. September 2025 – Musikerausflug nach Truden (Südtirol) zum Almabtrieb",
         "pictureUrl": "../images/articles/truden2025.jpeg",

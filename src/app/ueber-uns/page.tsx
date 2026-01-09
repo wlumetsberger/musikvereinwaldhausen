@@ -105,7 +105,9 @@ export default function UeberUnsPage() {
         { name: "Romana Fasching" },
         { name: "Sarah Grufeneder" },
         { name: "Viktoria Achleitner" },
-        { name: "Viktoria Klammer" }
+        { name: "Viktoria Klammer" }, 
+        { name: "Annalena Katzengruber" }, 
+        { name: "Tamara Hinterleitner" }
       ]
     },
     {
@@ -206,6 +208,7 @@ export default function UeberUnsPage() {
         { name: "Josef Wimmer" },
         { name: "Sebastian Aigner" },
         { name: "Daniel Lumetsberger" },
+        { name: "Maximilian Aigner" },
       ]
     },
 
